@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class C_ConfigurationDTO {
 	
 	    private Long id;
-	    private String country;
+	    private String COUNTRY;
 	    private String primaryBook;
 	    private String secondBook;
 	    private String operationalUnit;
