@@ -1,10 +1,10 @@
-package com.gupoti.mexico.portalarrendamiento.Dto;
+package com.gupoti.mexico.portalarrendamiento.Dto.Catalogos;
 
 import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
-public class C_ConfigurationDTO {
+public class ConfigurationDTO {
 	
 	private Long id;
 	private String country;

@@ -1,4 +1,4 @@
-package com.gupoti.mexico.portalarrendamiento.Model;
+package com.gupoti.mexico.portalarrendamiento.Model.Catalogos;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "\"XXPAR_AGR_CONFIGURATION_CATALOG_T\"" )
-public class C_ConfigurationModel {
+public class ConfigurationModel {
   @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
