@@ -1,4 +1,4 @@
-package com.gupoti.mexico.portalarrendamiento.Model;
+package com.gupoti.mexico.portalarrendamiento.Model.Catalogos;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,20 +7,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "\"XXPAR_AGR_CONFIGURATION_CATALOG_T\"" )
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class C_ConfigurationModel {
-	@Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "\"XXPAR_AGR_CONFIGURATION_CATALOG_T\"" )
+public class ConfigurationModel {
+  @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private Long id;
 
