@@ -1,4 +1,5 @@
 package com.gupoti.mexico.portalarrendamiento.Model.Catalogos;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,31 +16,52 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"XXPAR_AGR_CONFIGURATION_CATALOG_T\"" )
+@Table(name = "\"XXPAR_CONFIGURATION_CATALOG\"" )
 public class ConfigurationModel {
   @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
   private Long id;
 
-  @Column(name = "country", nullable = false)
+  @Column(name = "country")
   private String country;
 
-  @Column(name = "primary_book", nullable = false)
+  @Column(name = "primary_book")
   private String primaryBook;
 
-  @Column(name = "second_book", nullable = false)
+  @Column(name = "second_book")
   private String secondBook;
 
-  @Column(name = "operational_unit", nullable = false)
+  @Column(name = "operational_unit")
   private String operationalUnit;
 
-  @Column(name = "currency", nullable = false)
-  private String currency;
+  @Column(name = "divisa")
+  private String divisa;
 
-  @Column(name = "liability_account", nullable = false)
-  private String liabilityAccount;
+  @Column(name = "passive_acount")
+  private String passiveAcount;
 
-  @Column(name = "inactivation_date")
-  private LocalDateTime inactivationDate;
+   @Column(name = "inactivation_date", nullable = true)
+   private Instant inactivationDate;
+
+   @Column(name = "enabled")
+   private Boolean enabled;
+
+  @Column(name = "created_date")
+  private LocalDateTime createdDate;
+
+  @Column(name = "created_by")
+  private String createdBy;
+
+   @Column(name = "last_update_date")
+  private LocalDateTime lastUpdateDate;
+
+  @Column(name = "last_updated_by ")
+  private String lastupdatedby ;
+
+  @Column(name = "last_update_login")
+  private String lastUpdateLogin ;
+
+ 
+
+
 }
