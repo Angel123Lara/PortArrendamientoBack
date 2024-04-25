@@ -4,6 +4,9 @@ package com.gupoti.mexico.portalarrendamiento.Dto.Catalogos;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
@@ -11,7 +14,7 @@ import lombok.Data;
 @Data
 public class ConfigurationRequestDTO  {
 
-     
+     @JsonIgnore
      private Long id;
      @NotNull(message = "this field is not null") 
      @NotEmpty(message = "this field isn't empty")

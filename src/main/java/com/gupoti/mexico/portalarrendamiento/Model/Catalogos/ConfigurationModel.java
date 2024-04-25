@@ -16,37 +16,40 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"XXPAR_AGR_CONFIGURATION_CATALOG_T\"" )
+@Table(name = "\"XXPAR_CONFIGURATION_CATALOG\"" )
 public class ConfigurationModel {
   @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "country", nullable = false)
+  @Column(name = "country")
   private String country;
 
-  @Column(name = "primary_book", nullable = false)
+  @Column(name = "primary_book")
   private String primaryBook;
 
-  @Column(name = "second_book", nullable = false)
+  @Column(name = "second_book")
   private String secondBook;
 
-  @Column(name = "operational_unit", nullable = false)
+  @Column(name = "operational_unit")
   private String operationalUnit;
 
-  @Column(name = "divisa", nullable = false)
+  @Column(name = "divisa")
   private String divisa;
 
-  @Column(name = "passive_acount", nullable = false)
+  @Column(name = "passive_acount")
   private String passiveAcount;
 
-   @Column(nullable = true)
+   @Column(name = "inactivation_date", nullable = true)
    private Instant inactivationDate;
 
-  @Column(name = "created_date", nullable = false)
+   @Column(name = "enabled")
+   private Boolean enabled;
+
+  @Column(name = "created_date")
   private LocalDateTime createdDate;
 
-  @Column(name = "created_by", nullable = false)
+  @Column(name = "created_by")
   private String createdBy;
 
    @Column(name = "last_update_date")
@@ -58,8 +61,7 @@ public class ConfigurationModel {
   @Column(name = "last_update_login")
   private String lastUpdateLogin ;
 
-  @Column(name = "enabled")
-  private Boolean enabled;
+ 
 
 
 }

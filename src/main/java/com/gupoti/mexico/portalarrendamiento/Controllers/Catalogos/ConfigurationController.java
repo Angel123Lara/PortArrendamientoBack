@@ -10,17 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationRequestDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationResponseDTO;
 import com.gupoti.mexico.portalarrendamiento.Service.Catalogos.ConfigurationService;
-
-import jakarta.validation.Valid;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import jakarta.validation.Valid;
 import java.util.List;
+
+//import org.springframework.web.bind.annotation.DeleteMapping;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/catalogs/configurations")
@@ -29,18 +27,26 @@ public class ConfigurationController {
     @Autowired
     private ConfigurationService configurationService;
 
+
+//---------Obtiene una lista de todas las configuraciones disponibles. No requiere un ID porque no se enfoca en un elemento específico------------------------------
     @GetMapping
     public ResponseEntity<List<ConfigurationResponseDTO>> getAllConfigurations() {
         List<ConfigurationResponseDTO> configurations = configurationService.getAllConfigurations();
         return new ResponseEntity<>(configurations, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+
+
+//---------Obtiene una configuración específica por su ID. Es una operación de solo lectura que no modifica datos------------------------------
+   /*  @GetMapping("/{id}")
     public ResponseEntity<ConfigurationResponseDTO> getConfigurationById(@PathVariable Long id) {
         ConfigurationResponseDTO configuration = configurationService.getConfigurationById(id);
         return new ResponseEntity<>(configuration, HttpStatus.OK);
-    }
+    }*/ 
 
+
+
+//---------Crea una nueva configuración. No se necesita un ID porque se generará uno nuevo para la configuración creada------------------------------
     @PostMapping
     public ResponseEntity<ConfigurationResponseDTO> createConfiguration(
           @Valid  @RequestBody ConfigurationRequestDTO configurationRequestDTO) {
@@ -48,19 +54,22 @@ public class ConfigurationController {
         return new ResponseEntity<>(configuration, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+
+
+//-------Actualiza una configuración existente identificada por el ID. Reemplaza todos los datos de la configuración con los nuevos proporcionados.--------------------------------
+   /*  @PutMapping("/{id}")
     public ResponseEntity<ConfigurationResponseDTO> updateConfiguration(@PathVariable Long id,
             @RequestBody ConfigurationRequestDTO configurationRequestDTO) {
         ConfigurationResponseDTO configuration = configurationService.updateConfiguration(id, configurationRequestDTO);
         return new ResponseEntity<>(configuration, HttpStatus.OK);
-    }
+    } */ 
 
-    @DeleteMapping("/{id}")
+
+ //----- Elimina la configuración específica por su ID. Esta operación es irreversible y quita la configuración del sistema.---------
+   /* @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteConfiguration(@PathVariable Long id) {
-        configurationService.deleteConfiguration(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-   
+         configurationService.deleteConfiguration(id);
+             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    } */
 
 }
