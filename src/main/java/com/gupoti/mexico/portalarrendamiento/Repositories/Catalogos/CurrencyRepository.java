@@ -9,6 +9,4 @@ import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.CurrencyModel;
 public interface CurrencyRepository extends JpaRepository<CurrencyModel, Long> {
  
     CurrencyModel findFirstByCurrencyCode(String currencyCode);
-
-    CurrencyModel findFirstByCurrency(String Currency);
 }

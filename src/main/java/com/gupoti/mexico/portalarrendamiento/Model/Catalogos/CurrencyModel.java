@@ -8,14 +8,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @RequiredArgsConstructor
-@Table(name = "\"XXPAR_AGR_CURRENCIES_CATALOG_T\"")
+@Table(name = "\"XXPAR_CURRENCY_CATALOG\"")
 public class CurrencyModel {
 
     @Id
@@ -38,7 +42,7 @@ public class CurrencyModel {
     @Column(name = "last_update_login")
     private Long lastUpdateLogin;
     @NonNull
-    @Column(name = "enabled", nullable = false)
+    @Column(name = "enabled")
     private Boolean enabled;
 
 }

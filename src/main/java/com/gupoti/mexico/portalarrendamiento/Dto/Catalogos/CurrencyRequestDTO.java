@@ -8,8 +8,6 @@ import lombok.Data;
 
 @Data
 public class CurrencyRequestDTO {
-
-    private long Id;
     
     @NotNull(message = "this field isn't null")
     @NotEmpty(message = "this field isn't empty")
