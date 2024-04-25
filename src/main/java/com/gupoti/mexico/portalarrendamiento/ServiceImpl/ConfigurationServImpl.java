@@ -8,10 +8,10 @@ import com.gupoti.mexico.portalarrendamiento.Service.Catalogos.ConfigurationServ
 @Service
 public class ConfigurationServImpl implements ConfigurationServ {
 
-    private ConfigurationRepo repositorty;
+    private ConfigurationRepo repository;
 
     public ConfigurationServImpl(ConfigurationRepo repository){
-        this.repositorty = repository;
+        this.repository = repository;
     }
     
 }
