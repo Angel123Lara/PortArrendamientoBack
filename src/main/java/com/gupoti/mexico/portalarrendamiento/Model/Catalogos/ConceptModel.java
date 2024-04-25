@@ -32,7 +32,7 @@ public class ConceptModel {
     private Long last_updated_by;
     @Column(name="last_update_login")
     private Long last_update_login;
-    // @Column(name="enable")
-    // private boolean enable;
+    @Column(name="enabled")
+    private Boolean enabled;
 
 }
