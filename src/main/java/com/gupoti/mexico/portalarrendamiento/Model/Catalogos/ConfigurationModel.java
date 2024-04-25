@@ -1,4 +1,5 @@
 package com.gupoti.mexico.portalarrendamiento.Model.Catalogos;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,7 +20,6 @@ import lombok.NoArgsConstructor;
 public class ConfigurationModel {
   @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
   private Long id;
 
   @Column(name = "country", nullable = false)
@@ -34,12 +34,32 @@ public class ConfigurationModel {
   @Column(name = "operational_unit", nullable = false)
   private String operationalUnit;
 
-  @Column(name = "currency", nullable = false)
-  private String currency;
+  @Column(name = "divisa", nullable = false)
+  private String divisa;
 
-  @Column(name = "liability_account", nullable = false)
-  private String liabilityAccount;
+  @Column(name = "passive_acount", nullable = false)
+  private String passiveAcount;
 
-  @Column(name = "inactivation_date")
-  private LocalDateTime inactivationDate;
+   @Column(nullable = true)
+   private Instant inactivationDate;
+
+  @Column(name = "created_date", nullable = false)
+  private LocalDateTime createdDate;
+
+  @Column(name = "created_by", nullable = false)
+  private String createdBy;
+
+   @Column(name = "last_update_date")
+  private LocalDateTime lastUpdateDate;
+
+  @Column(name = "last_updated_by ")
+  private String lastupdatedby ;
+
+  @Column(name = "last_update_login")
+  private String lastUpdateLogin ;
+
+  @Column(name = "enabled")
+  private Boolean enabled;
+
+
 }
