@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationRequestDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationResponseDTO;
 import com.gupoti.mexico.portalarrendamiento.Service.Catalogos.ConfigurationService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +25,7 @@ private final ConfigurationService service;
     }
 
     @PostMapping
-    public ResponseEntity<ConfigurationResponseDTO> create(@RequestBody ConfigurationRequestDTO request) {
+    public ResponseEntity<ConfigurationResponseDTO> create(@Valid @RequestBody ConfigurationRequestDTO request) {
         return ResponseEntity.ok(service.create(request));
     }
 
@@ -32,7 +35,7 @@ private final ConfigurationService service;
     }
 
     @PutMapping("/{country}")
-    public ResponseEntity<ConfigurationResponseDTO> update(@PathVariable String country, @RequestBody ConfigurationRequestDTO request) {
+    public ResponseEntity<ConfigurationResponseDTO> update(@Valid @PathVariable String country, @RequestBody ConfigurationRequestDTO request) {
         return ResponseEntity.ok(service.update(country, request));
     }
 }

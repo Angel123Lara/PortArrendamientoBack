@@ -49,7 +49,7 @@ public ConfigurationResponseDTO create(ConfigurationRequestDTO requestDTO) {
     public ConfigurationResponseDTO update(String country, ConfigurationRequestDTO requestDTO) {
         ConfigurationModel existCountry = repository.findByCountry(requestDTO.getCountry());
         if (existCountry != null && !existCountry.getCountry().equals(country)) {
-            throw new DataIntegrityViolationException("El valor " + requestDTO.getCountry() + " ya existe y el campo solo permite valores únicos.");
+            throw new DataIntegrityViolationException("El valor de esta actualizacion " + requestDTO.getCountry() + " ya existe y el campo solo permite valores únicos.");
         }
         ConfigurationModel model = repository.findByCountry(country);
         model.setPrimaryBook(requestDTO.getPrimaryBook());
