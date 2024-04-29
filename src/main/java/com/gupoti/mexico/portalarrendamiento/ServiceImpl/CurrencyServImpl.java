@@ -2,6 +2,7 @@ package com.gupoti.mexico.portalarrendamiento.ServiceImpl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,24 @@ public class CurrencyServImpl implements CurrencyService{
 
     } 
 
+
+    public CurrencyDTO enabledById(Long id)
+    {
+        CurrencyModel existEntity = repository.findById(id)
+                                    .orElseThrow(()-> new DataIntegrityViolationException("No se encontro el registro con el id :"+ id ));
+        
+        if(existEntity.getEnabled() == null)
+        {
+            existEntity.setEnabled(true);
+        }else{
+        existEntity.setEnabled(!existEntity.getEnabled());
+        }
+        CurrencyModel responseDB = repository.save(existEntity);
+
+        return new CurrencyDTO(responseDB.getId(),responseDB.getCurrencyCode(), responseDB.getDivisa(), responseDB.getEnabled());
+   
+        
+
     public CurrencyDTO update(Long id, CurrencyRequestDTO data)
     {
         CurrencyModel entityDB = repository.findById(id)
@@ -62,6 +81,7 @@ public class CurrencyServImpl implements CurrencyService{
         CurrencyDTO response = modelMapper.map(repository.save(entityDB), CurrencyDTO.class);
 
         return response;
+
 
     }
 }

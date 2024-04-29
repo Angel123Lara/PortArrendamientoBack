@@ -10,5 +10,7 @@ public interface CurrencyService {
 
     List<CurrencyDTO> findAll();
 
+    CurrencyDTO enabledById(Long id);
+
     CurrencyDTO update(Long id, CurrencyRequestDTO data);
 }
