@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import jakarta.validation.Valid;
 import java.util.List;
 
-//import org.springframework.web.bind.annotation.DeleteMapping;
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.PutMapping;
 
@@ -64,12 +63,5 @@ public class ConfigurationController {
         return new ResponseEntity<>(configuration, HttpStatus.OK);
     } */ 
 
-
- //----- Elimina la configuración específica por su ID. Esta operación es irreversible y quita la configuración del sistema.---------
-   /* @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteConfiguration(@PathVariable Long id) {
-         configurationService.deleteConfiguration(id);
-             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } */
 
 }
