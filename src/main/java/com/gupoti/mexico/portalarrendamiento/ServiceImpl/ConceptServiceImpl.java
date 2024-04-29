@@ -28,8 +28,8 @@ public class ConceptServiceImpl implements ConceptService {
     public ConceptDTO save(ConceptRequestDTO data){
        
         ConceptModel entity = new ConceptModel();
-        entity.setPortalConcept(data.getPortal_concept());
-        entity.setEbsConcept(data.getEbs_concept());
+        entity.setPortalConcept(data.getPortalConcept());
+        entity.setEbsConcept(data.getEbsConcept());
         entity.setEnabled(true);
         entity.setCreationDate(new Date());
         ConceptModel responseDB = repository.save(entity);
@@ -63,8 +63,8 @@ public class ConceptServiceImpl implements ConceptService {
     
     if (optionalEntity.isPresent()) {
         ConceptModel existingEntity = optionalEntity.get();
-        existingEntity.setPortalConcept(concepttDTO.getPortal_concept());
-        existingEntity.setEbsConcept(concepttDTO.getEbs_concept());
+        existingEntity.setPortalConcept(concepttDTO.getPortalConcept());
+        existingEntity.setEbsConcept(concepttDTO.getEbsConcept());
         existingEntity.setLastUpdateDate(new Date());
 
          // Verifica si getEnabled() devuelve null y asigna un valor predeterminado en ese caso

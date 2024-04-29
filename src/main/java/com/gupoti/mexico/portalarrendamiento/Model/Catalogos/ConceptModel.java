@@ -25,21 +25,21 @@ public class ConceptModel {
     @Column(name = "ID")
     private Long id;
     @Column(name="PORTAL_CONCEPT")
-    private String portal_concept;
+    private String portalConcept;
     @Column(name="EBS_CONCEPT")
-    private String EBS_concept;
+    private String ebsConcept;
     @Column(name="INACTIVATION_DATE")
-    private Date inactivation_date;
+    private Date inactivationDate;
     @Column(name="CREATION_DATE")
-    private Date creation_date;
+    private Date creationDate;
     @Column(name="CREATED_BY")
-    private Long created_by;
+    private Long createdBy;
     @Column(name="LAST_UPDATE_DATE")
-    private Date last_update_date;
+    private Date lastUpdateDate;
     @Column(name="LAST_UPDATE_BY")
-    private Long last_updated_by;
+    private Long lastUpdatedBy;
     @Column(name="LAST_UPDATE_LOGIN")
-    private Long last_update_login;
+    private Long lastUpdateLogin;
     @Column(name="ENABLED")
     private Boolean enabled;
 
