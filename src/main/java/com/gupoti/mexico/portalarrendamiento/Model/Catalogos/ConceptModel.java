@@ -17,35 +17,30 @@ import lombok.experimental.NonFinal;
 @Data
 @Entity
 @NoArgsConstructor
-
 @AllArgsConstructor
 @Table(name = "\"XXPAR_CONCEPTS_CATALOG\"" )
-
 public class ConceptModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
-    @NonNull
-    @Column(name="portal_concept")
-    private String portalConcept;
-    @NonNull
-    @Column(name="ebs_concept")
-    private String ebsConcept;
-    @Column(name="inactivation_date")
-    private Date inactivationDate;
-    @NonNull
-    @Column(name="enabled")
+    @Column(name="PORTAL_CONCEPT")
+    private String portal_concept;
+    @Column(name="EBS_CONCEPT")
+    private String EBS_concept;
+    @Column(name="INACTIVATION_DATE")
+    private Date inactivation_date;
+    @Column(name="CREATION_DATE")
+    private Date creation_date;
+    @Column(name="CREATED_BY")
+    private Long created_by;
+    @Column(name="LAST_UPDATE_DATE")
+    private Date last_update_date;
+    @Column(name="LAST_UPDATE_BY")
+    private Long last_updated_by;
+    @Column(name="LAST_UPDATE_LOGIN")
+    private Long last_update_login;
+    @Column(name="ENABLED")
     private Boolean enabled;
-    @Column(name="creation_date")
-    private Date creationDate;
-    @Column(name="created_by")
-    private Long createdBy;
-    @Column(name="last_update_date")
-    private Date lastUpdateDate;
-    @Column(name="last_updated_by")
-    private Long lastUpdatedBy;
-    @Column(name="last_update_login")
-    private Long lastUpdateLogin;
-    
 
 }

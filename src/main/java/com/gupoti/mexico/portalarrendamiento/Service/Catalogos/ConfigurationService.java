@@ -2,6 +2,7 @@ package com.gupoti.mexico.portalarrendamiento.Service.Catalogos;
 import java.util.List;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationRequestDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationResponseDTO;
+import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.ConfigurationModel;
 
 public interface ConfigurationService {
     List<ConfigurationResponseDTO> getAllConfigurations();
@@ -9,10 +10,6 @@ public interface ConfigurationService {
     ConfigurationResponseDTO getConfigurationById(Long id);
 
     ConfigurationResponseDTO createConfiguration(ConfigurationRequestDTO configurationRequestDTO);
-
-    ConfigurationResponseDTO updateConfiguration(Long id, ConfigurationRequestDTO configurationRequestDTO);
-
-    void deleteConfiguration(Long id);
-
-    ConfigurationResponseDTO createConfigurationCatalog(ConfigurationRequestDTO request);
+    
+    ConfigurationModel saveConfiguration(ConfigurationModel configuration);
 }
