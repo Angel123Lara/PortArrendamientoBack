@@ -19,7 +19,7 @@ import lombok.experimental.NonFinal;
 @NoArgsConstructor
 
 @AllArgsConstructor
-@Table(name = "\"XXPAR_AGR_CONCEPTS_CATALOG_T\"" )
+@Table(name = "\"XXPAR_CONCEPTS_CATALOG\"" )
 
 public class ConceptModel {
     @Id
@@ -27,24 +27,25 @@ public class ConceptModel {
     private Long id;
     @NonNull
     @Column(name="portal_concept")
-    private String portal_concept;
+    private String portalConcept;
     @NonNull
-    @Column(name="EBS_concept")
-    private String EBS_concept;
+    @Column(name="ebs_concept")
+    private String ebsConcept;
     @Column(name="inactivation_date")
-    private Date inactivation_date;
-    @Column(name="creation_date")
-    private Date creation_date;
-    @Column(name="created_by")
-    private Date created_by;
-    @Column(name="last_update_date")
-    private Date last_update_date;
-    @Column(name="last_update_by")
-    private Long last_updated_by;
-    @Column(name="last_update_login")
-    private Long last_update_login;
+    private Date inactivationDate;
     @NonNull
     @Column(name="enabled")
     private Boolean enabled;
+    @Column(name="creation_date")
+    private Date creationDate;
+    @Column(name="created_by")
+    private Long createdBy;
+    @Column(name="last_update_date")
+    private Date lastUpdateDate;
+    @Column(name="last_updated_by")
+    private Long lastUpdatedBy;
+    @Column(name="last_update_login")
+    private Long lastUpdateLogin;
+    
 
 }

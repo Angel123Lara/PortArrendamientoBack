@@ -28,14 +28,14 @@ public class ConceptServiceImpl implements ConceptService {
        
         ConceptModel entity = new ConceptModel();
         entity.setPortal_concept(data.getPortal_concept());
-        entity.setEBS_concept(data.getEBS_concept());
+        entity.setEbs_concept(data.getEbs_concept());
         entity.setEnabled(true);
         ConceptModel responseDB = repository.save(entity);
 
         ConceptDTO conceptDTO = new ConceptDTO();
         conceptDTO.setId(responseDB.getId());
         conceptDTO.setPortal_concept(responseDB.getPortal_concept());
-        conceptDTO.setEBS_concept(responseDB.getEBS_concept());
+        conceptDTO.setEbs_concept(responseDB.getEbs_concept());
         conceptDTO.setEnable(responseDB.getEnabled());
         
         return conceptDTO;
@@ -62,7 +62,7 @@ public class ConceptServiceImpl implements ConceptService {
     if (optionalEntity.isPresent()) {
         ConceptModel existingEntity = optionalEntity.get();
         existingEntity.setPortal_concept(concepttDTO.getPortal_concept());
-        existingEntity.setEBS_concept(concepttDTO.getEBS_concept());
+        existingEntity.setEbs_concept(concepttDTO.getEbs_concept());
 
          // Verifica si getEnabled() devuelve null y asigna un valor predeterminado en ese caso
          Boolean enabled = existingEntity.getEnabled() != null ? existingEntity.getEnabled() : Boolean.FALSE;
@@ -76,7 +76,7 @@ public class ConceptServiceImpl implements ConceptService {
         ConceptDTO updatedDTO = new ConceptDTO();
         updatedDTO.setId(updatedEntity.getId());
         updatedDTO.setPortal_concept(updatedEntity.getPortal_concept());
-        updatedDTO.setEBS_concept(updatedEntity.getEBS_concept());
+        updatedDTO.setEbs_concept(updatedEntity.getEbs_concept());
         updatedDTO.setEnable(updatedEntity.getEnabled());
         
         return updatedDTO;

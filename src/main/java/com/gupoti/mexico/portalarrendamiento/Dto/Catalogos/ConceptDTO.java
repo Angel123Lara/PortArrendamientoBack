@@ -7,7 +7,7 @@ public class ConceptDTO{
 	
 	private Long id;
     private String portal_concept;
-    private String EBS_concept;
+    private String ebs_concept;
     private Date inactivation_date;
     private boolean enable;
 
