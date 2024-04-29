@@ -27,15 +27,15 @@ public class ConceptServiceImpl implements ConceptService {
     public ConceptDTO save(ConceptRequestDTO data){
        
         ConceptModel entity = new ConceptModel();
-        entity.setPortal_concept(data.getPortal_concept());
-        entity.setEbs_concept(data.getEbs_concept());
+        entity.setPortalConcept(data.getPortal_concept());
+        entity.setEbsConcept(data.getEbs_concept());
         entity.setEnabled(true);
         ConceptModel responseDB = repository.save(entity);
 
         ConceptDTO conceptDTO = new ConceptDTO();
         conceptDTO.setId(responseDB.getId());
-        conceptDTO.setPortal_concept(responseDB.getPortal_concept());
-        conceptDTO.setEbs_concept(responseDB.getEbs_concept());
+        conceptDTO.setPortal_concept(responseDB.getPortalConcept());
+        conceptDTO.setEbs_concept(responseDB.getEbsConcept());
         conceptDTO.setEnable(responseDB.getEnabled());
         
         return conceptDTO;
@@ -61,8 +61,8 @@ public class ConceptServiceImpl implements ConceptService {
     
     if (optionalEntity.isPresent()) {
         ConceptModel existingEntity = optionalEntity.get();
-        existingEntity.setPortal_concept(concepttDTO.getPortal_concept());
-        existingEntity.setEbs_concept(concepttDTO.getEbs_concept());
+        existingEntity.setPortalConcept(concepttDTO.getPortal_concept());
+        existingEntity.setEbsConcept(concepttDTO.getEbs_concept());
 
          // Verifica si getEnabled() devuelve null y asigna un valor predeterminado en ese caso
          Boolean enabled = existingEntity.getEnabled() != null ? existingEntity.getEnabled() : Boolean.FALSE;
@@ -75,8 +75,8 @@ public class ConceptServiceImpl implements ConceptService {
         // Construye y retorna el DTO actualizado
         ConceptDTO updatedDTO = new ConceptDTO();
         updatedDTO.setId(updatedEntity.getId());
-        updatedDTO.setPortal_concept(updatedEntity.getPortal_concept());
-        updatedDTO.setEbs_concept(updatedEntity.getEbs_concept());
+        updatedDTO.setPortal_concept(updatedEntity.getPortalConcept());
+        updatedDTO.setEbs_concept(updatedEntity.getEbsConcept());
         updatedDTO.setEnable(updatedEntity.getEnabled());
         
         return updatedDTO;
