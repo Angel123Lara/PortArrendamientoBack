@@ -11,28 +11,29 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "XXPAR_AGR_CONCEPTS_CATALOG_T")
+@Table(name = "\"XXPAR_CONCEPTS_CATALOG\"")
 public class ConceptModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
-    @Column(name="portal_concept")
+    @Column(name="PORTAL_CONCEPT")
     private String portal_concept;
-    @Column(name="EBS_concept")
+    @Column(name="EBS_CONCEPT")
     private String EBS_concept;
-    @Column(name="inactivation_date")
+    @Column(name="INACTIVATION_DATE")
     private Date inactivation_date;
-    @Column(name="creation_date")
+    @Column(name="CREATION_DATE")
     private Date creation_date;
-    @Column(name="created_by")
-    private Date created_by;
-    @Column(name="last_update_date")
+    @Column(name="CREATED_BY")
+    private Long created_by;
+    @Column(name="LAST_UPDATE_DATE")
     private Date last_update_date;
-    @Column(name="last_update_by")
+    @Column(name="LAST_UPDATE_BY")
     private Long last_updated_by;
-    @Column(name="last_update_login")
+    @Column(name="LAST_UPDATE_LOGIN")
     private Long last_update_login;
-    @Column(name="enabled")
+    @Column(name="ENABLED")
     private Boolean enabled;
 
 }

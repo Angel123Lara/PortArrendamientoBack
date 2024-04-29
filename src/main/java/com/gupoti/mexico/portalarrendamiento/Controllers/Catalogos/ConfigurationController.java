@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
+
+
 @RestController
 @RequestMapping("/api/catalogs/configurations")
 public class ConfigurationController {
@@ -34,8 +36,10 @@ private final ConfigurationService service;
         return ResponseEntity.ok(service.get(country));
     }
 
+
     @PutMapping("/{country}")
     public ResponseEntity<ConfigurationResponseDTO> update(@Valid @PathVariable String country, @RequestBody ConfigurationRequestDTO request) {
         return ResponseEntity.ok(service.update(country, request));
     }
+
 }

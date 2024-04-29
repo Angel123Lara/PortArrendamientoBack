@@ -13,6 +13,8 @@ import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.ConfigurationModel;
 @Repository
 public interface ConfigurationRepository extends JpaRepository<ConfigurationModel, Long> {
 
+
     ConfigurationModel findByCountry(String country);
+
 
 }
