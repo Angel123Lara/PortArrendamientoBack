@@ -55,6 +55,6 @@ public class ConfigurationRequestDTO  {
      @Size(min = 1, max =48, message ="the max length 48")
      @Pattern(regexp = "^[A-Z0-9.]*$", message = "This field must contain only uppercase letters and digits")
      private String passiveAcount;
-      
+     private Boolean enabled;
    
 }

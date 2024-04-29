@@ -1,6 +1,6 @@
 package com.gupoti.mexico.portalarrendamiento.Model.Catalogos;
-import java.time.Instant;
-import java.time.LocalDateTime;
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +22,7 @@ public class ConfigurationModel {
 
   @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
   private Long id;
  @NonNull
   @Column(name = "country")
@@ -43,25 +44,25 @@ public class ConfigurationModel {
   private String passiveAcount;
   @NonNull
    @Column(name = "inactivation_date", nullable = true)
-   private Instant inactivationDate;
+   private  Date inactivationDate;
    @NonNull
-   @Column(name = "enabled")
+   @Column(name = "enabled",nullable = true)
    private Boolean enabled;
 
-  @Column(name = "created_date")
-  private LocalDateTime createdDate;
+  @Column(name = "creation_date")
+  private  Date createdDate;
 
   @Column(name = "created_by")
-  private String createdBy;
+  private Long createdBy;
 
    @Column(name = "last_update_date")
-  private LocalDateTime lastUpdateDate;
+  private  Date lastUpdateDate;
 
   @Column(name = "last_updated_by ")
-  private String lastupdatedby ;
+  private Long lastupdatedby ;
 
   @Column(name = "last_update_login")
-  private String lastUpdateLogin ;
+  private Long lastUpdateLogin ;
 
  
 

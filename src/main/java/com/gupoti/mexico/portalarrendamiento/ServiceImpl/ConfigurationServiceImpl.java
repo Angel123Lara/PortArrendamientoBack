@@ -3,6 +3,9 @@ package com.gupoti.mexico.portalarrendamiento.ServiceImpl;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+
 import org.modelmapper.ModelMapper;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationRequestDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationResponseDTO;
@@ -31,8 +34,11 @@ public ConfigurationResponseDTO create(ConfigurationRequestDTO requestDTO) {
     }
     ConfigurationModel model = modelMapper.map(requestDTO, ConfigurationModel.class);
     ConfigurationModel savedModel = repository.save(model);
+    model.setCreatedDate(new Date());
     return modelMapper.map(savedModel, ConfigurationResponseDTO.class);
 }
+
+
     @Override
     public ConfigurationResponseDTO get(String country) {
         ConfigurationModel model = repository.findByCountry(country);
@@ -51,6 +57,8 @@ public ConfigurationResponseDTO create(ConfigurationRequestDTO requestDTO) {
         model.setOperationalUnit(requestDTO.getOperationalUnit());
         model.setDivisa(requestDTO.getDivisa());
         model.setPassiveAcount(requestDTO.getPassiveAcount());
+        model.setEnabled(requestDTO.getEnabled());
+        model.setLastUpdateDate(new Date());
         ConfigurationModel savedModel = repository.save(model);
         return modelMapper.map(savedModel, ConfigurationResponseDTO.class);
     }
