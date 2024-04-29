@@ -1,5 +1,6 @@
 package com.gupoti.mexico.portalarrendamiento.ServiceImpl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,6 +33,8 @@ public class CurrencyServImpl implements CurrencyService{
         }
         //
         CurrencyModel entity = new CurrencyModel(data.getCurrencyCode(), data.getCurrency(), true);
+        
+        entity.setCreationDate(new Date());
         CurrencyModel responseDB = repository.save(entity);
         return new CurrencyDTO(responseDB.getId(),responseDB.getCurrencyCode(), responseDB.getCurrency(), responseDB.getEnabled());
     };
@@ -57,6 +60,7 @@ public class CurrencyServImpl implements CurrencyService{
                                                             }
         entityDB.setCurrency(data.getCurrency());
         entityDB.setCurrencyCode(data.getCurrencyCode());
+        entityDB.setLastUpdateDate(new Date());
         CurrencyDTO response = modelMapper.map(repository.save(entityDB), CurrencyDTO.class);
 
         return response;
