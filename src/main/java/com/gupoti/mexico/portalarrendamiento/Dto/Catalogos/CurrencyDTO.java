@@ -13,7 +13,7 @@ public class CurrencyDTO {
 
     private String currencyCode;
 
-    private String currency;
+    private String divisa;
 
     private Boolean enabled;
 }
