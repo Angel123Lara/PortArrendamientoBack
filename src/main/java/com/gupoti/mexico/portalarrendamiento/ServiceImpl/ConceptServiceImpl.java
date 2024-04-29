@@ -36,8 +36,8 @@ public class ConceptServiceImpl implements ConceptService {
 
         ConceptDTO conceptDTO = new ConceptDTO();
         conceptDTO.setId(responseDB.getId());
-        conceptDTO.setPortal_concept(responseDB.getPortalConcept());
-        conceptDTO.setEbs_concept(responseDB.getEbsConcept());
+        conceptDTO.setPortalConcept(responseDB.getPortalConcept());
+        conceptDTO.setEbsConcept(responseDB.getEbsConcept());
         conceptDTO.setEnable(responseDB.getEnabled());
         
         return conceptDTO;
@@ -78,8 +78,8 @@ public class ConceptServiceImpl implements ConceptService {
         // Construye y retorna el DTO actualizado
         ConceptDTO updatedDTO = new ConceptDTO();
         updatedDTO.setId(updatedEntity.getId());
-        updatedDTO.setPortal_concept(updatedEntity.getPortalConcept());
-        updatedDTO.setEbs_concept(updatedEntity.getEbsConcept());
+        updatedDTO.setPortalConcept(updatedEntity.getPortalConcept());
+        updatedDTO.setEbsConcept(updatedEntity.getEbsConcept());
         updatedDTO.setEnable(updatedEntity.getEnabled());
         
         return updatedDTO;
