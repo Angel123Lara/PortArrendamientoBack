@@ -4,7 +4,8 @@ import com.gupoti.mexico.portalarrendamiento.Service.Catalogos.ConceptService;
 
 import jakarta.validation.Valid;
 
-import org.apache.commons.lang3.Validate;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConceptDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConceptRequestDTO;
 
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -27,11 +30,25 @@ public class ConceptController {
         this.conceptService=conceptService;
     }
 
+
+   @GetMapping
+    public ResponseEntity<List<ConceptDTO>> getConceptAll() {
+        List<ConceptDTO> concept = conceptService.getConceptAll();
+        return new ResponseEntity<>(concept,HttpStatus.OK);
+    }
+    
     @PostMapping
     public ResponseEntity<ConceptDTO> save(@Valid @RequestBody ConceptRequestDTO request) {
         ConceptDTO savedConcept = conceptService.save(request);
         return  ResponseEntity.status(HttpStatus.CREATED).body(savedConcept);
     }
+
+     @PutMapping("/{id}")
+    public ResponseEntity<ConceptDTO> updateConcept(@PathVariable Long id, @RequestBody ConceptRequestDTO Data) {
+        ConceptDTO updatedConcept = conceptService.updateConcept(id, Data);
+        return ResponseEntity.ok(updatedConcept);
+    }
+
 
 
 }

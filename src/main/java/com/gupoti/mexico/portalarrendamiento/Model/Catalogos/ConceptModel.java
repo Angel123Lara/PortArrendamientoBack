@@ -7,17 +7,28 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+//import lombok.RequiredArgsConstructor;
+import lombok.experimental.NonFinal;
 
 @Data
 @Entity
-@Table(name = "XXPAR_AGR_CONCEPTS_CATALOG_T")
+@NoArgsConstructor
+
+@AllArgsConstructor
+@Table(name = "\"XXPAR_AGR_CONCEPTS_CATALOG_T\"" )
+
 public class ConceptModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NonNull
     @Column(name="portal_concept")
     private String portal_concept;
+    @NonNull
     @Column(name="EBS_concept")
     private String EBS_concept;
     @Column(name="inactivation_date")
@@ -32,6 +43,7 @@ public class ConceptModel {
     private Long last_updated_by;
     @Column(name="last_update_login")
     private Long last_update_login;
+    @NonNull
     @Column(name="enabled")
     private Boolean enabled;
 
