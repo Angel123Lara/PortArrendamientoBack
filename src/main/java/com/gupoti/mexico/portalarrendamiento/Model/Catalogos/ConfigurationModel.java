@@ -10,6 +10,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 
 @Entity
@@ -18,31 +19,32 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name = "\"XXPAR_CONFIGURATION_CATALOG\"" )
 public class ConfigurationModel {
+
   @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
+ @NonNull
   @Column(name = "country")
   private String country;
-
+  @NonNull
   @Column(name = "primary_book")
   private String primaryBook;
-
+  @NonNull
   @Column(name = "second_book")
   private String secondBook;
-
+  @NonNull
   @Column(name = "operational_unit")
   private String operationalUnit;
-
+  @NonNull
   @Column(name = "divisa")
   private String divisa;
-
+  @NonNull
   @Column(name = "passive_acount")
   private String passiveAcount;
-
+  @NonNull
    @Column(name = "inactivation_date", nullable = true)
    private Instant inactivationDate;
-
+   @NonNull
    @Column(name = "enabled")
    private Boolean enabled;
 
