@@ -8,6 +8,7 @@ import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.ConceptModel;
 import com.gupoti.mexico.portalarrendamiento.Repositories.Catalogos.ConceptRepository;
 import com.gupoti.mexico.portalarrendamiento.Service.Catalogos.ConceptService;
 import java.util.stream.Collectors;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -30,6 +31,7 @@ public class ConceptServiceImpl implements ConceptService {
         entity.setPortalConcept(data.getPortal_concept());
         entity.setEbsConcept(data.getEbs_concept());
         entity.setEnabled(true);
+        entity.setCreationDate(new Date());
         ConceptModel responseDB = repository.save(entity);
 
         ConceptDTO conceptDTO = new ConceptDTO();
@@ -63,6 +65,7 @@ public class ConceptServiceImpl implements ConceptService {
         ConceptModel existingEntity = optionalEntity.get();
         existingEntity.setPortalConcept(concepttDTO.getPortal_concept());
         existingEntity.setEbsConcept(concepttDTO.getEbs_concept());
+        existingEntity.setLastUpdateDate(new Date());
 
          // Verifica si getEnabled() devuelve null y asigna un valor predeterminado en ese caso
          Boolean enabled = existingEntity.getEnabled() != null ? existingEntity.getEnabled() : Boolean.FALSE;
