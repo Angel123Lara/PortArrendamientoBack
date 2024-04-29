@@ -61,5 +61,6 @@ public ConfigurationResponseDTO create(ConfigurationRequestDTO requestDTO) {
         model.setLastUpdateDate(new Date());
         ConfigurationModel savedModel = repository.save(model);
         return modelMapper.map(savedModel, ConfigurationResponseDTO.class);
+
     }
 }

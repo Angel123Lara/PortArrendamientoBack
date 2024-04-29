@@ -1,7 +1,6 @@
 package com.gupoti.mexico.portalarrendamiento.ServiceImpl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +28,9 @@ public class CurrencyServImpl implements CurrencyService{
             throw new DataIntegrityViolationException("El valor " + data.getCurrencyCode() + " ya existe y el campo solo permite valores únicos.");
         }
         //
-        CurrencyModel entity = new CurrencyModel(data.getCurrencyCode(), data.getCurrency(), true);
+        CurrencyModel entity = new CurrencyModel(data.getCurrencyCode(), data.getDivisa(), true);
         CurrencyModel responseDB = repository.save(entity);
-        return new CurrencyDTO(responseDB.getId(),responseDB.getCurrencyCode(), responseDB.getCurrency(), responseDB.getEnabled());
+        return new CurrencyDTO(responseDB.getId(),responseDB.getCurrencyCode(), responseDB.getDivisa(), responseDB.getEnabled());
     };
 
     public List<CurrencyDTO> findAll()
