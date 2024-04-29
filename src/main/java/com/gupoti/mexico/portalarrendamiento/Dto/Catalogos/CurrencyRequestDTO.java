@@ -19,6 +19,6 @@ public class CurrencyRequestDTO {
     @NotEmpty(message = "this field isn't empty")
     @NotBlank(message = "this field isn't blank")
     @Size(min = 1, max= 50 , message = "the max length is 50")
-    private String currency;
+    private String divisa;
     
 }

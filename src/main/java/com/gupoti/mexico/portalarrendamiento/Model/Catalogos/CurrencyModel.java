@@ -24,13 +24,14 @@ public class CurrencyModel {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long Id; 
     @NonNull
     @Column(name = "CURRENCY_CODE")
     private String currencyCode;
     @NonNull
-    @Column(name = "CURRENCY")
-    private String currency;
+    @Column(name = "DIVISA")
+    private String divisa;
     @Column(name = "creation_date")
     private Date creationDate = new Date();
     @Column(name = "created_by")

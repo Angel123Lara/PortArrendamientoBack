@@ -24,7 +24,7 @@ public class ConfigurationModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "country")
+  @Column(name = "country",unique = true)
   private String country;
 
   @Column(name = "primary_book")

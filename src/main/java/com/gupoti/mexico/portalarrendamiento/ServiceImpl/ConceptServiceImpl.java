@@ -1,8 +1,6 @@
 package com.gupoti.mexico.portalarrendamiento.ServiceImpl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConceptDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConceptRequestDTO;
 import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.ConceptModel;
@@ -21,14 +19,14 @@ public class ConceptServiceImpl implements ConceptService {
         ConceptModel entity = new ConceptModel();
         entity.setPortal_concept(data.getPortal_concept());
         entity.setEBS_concept(data.getEBS_concept());
-        // entity.setEnable(true);
+        entity.setEnabled(true);
         ConceptModel responseDB = repository.save(entity);
 
         ConceptDTO conceptDTO = new ConceptDTO();
         conceptDTO.setId(responseDB.getId());
         conceptDTO.setPortal_concept(responseDB.getPortal_concept());
         conceptDTO.setEBS_concept(responseDB.getEBS_concept());
-        // conceptDTO.setEnable(responseDB);
+        conceptDTO.setEnable(responseDB.getEnabled());
         
         return conceptDTO;
 
