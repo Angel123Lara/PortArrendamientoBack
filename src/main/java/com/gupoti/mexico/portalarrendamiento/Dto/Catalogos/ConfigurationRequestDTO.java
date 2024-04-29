@@ -27,35 +27,35 @@ public class ConfigurationRequestDTO  {
      @NotEmpty(message = "this field isn't empty")
      @NotBlank(message = "this field isn't blank") 
      @Size(min = 1, max =30, message ="the max length 30")
-     @Pattern(regexp = "^[A-Z]*$", message = "This field must contain only uppercase letters")
+     @Pattern(regexp = "^[A-Z_]*$", message = "This field must contain only uppercase letters")
      private String primaryBook;
 
      @NotNull(message = "this field is not null") 
      @NotEmpty(message = "this field isn't empty")
      @NotBlank(message = "this field isn't blank") 
      @Size(min = 1, max =30, message ="the max length 30")
-     @Pattern(regexp = "^[A-Z]*$", message = "This field must contain only uppercase letters")
+     @Pattern(regexp = "^[A-Z_]*$", message = "This field must contain only uppercase letters")
      private String secondBook;
 
      @NotNull(message = "this field is not null") 
      @NotEmpty(message = "this field isn't empty")
      @NotBlank(message = "this field isn't blank") 
      @Size(min = 1, max =30, message ="the max length 30")
-     @Pattern(regexp = "^[A-Z]*$", message = "This field must contain only uppercase letters")
+     @Pattern(regexp = "^[A-Z_]*$", message = "This field must contain only uppercase letters")
      private String operationalUnit;
 
      @NotNull(message = "this field is not null") 
      @NotEmpty(message = "this field isn't empty")
      @NotBlank(message = "this field isn't blank") 
      @Size(min = 1, max =5, message ="the max length 5")
-     @Pattern(regexp = "^[A-Z]*$", message = "This field must contain only uppercase letters")
+     @Pattern(regexp = "^[A-Z_]*$", message = "This field must contain only uppercase letters")
      private String divisa;
 
      @NotNull(message = "this field is not null") 
      @NotEmpty(message = "this field isn't empty")
      @NotBlank(message = "this field isn't blank") 
      @Size(min = 1, max =48, message ="the max length 48")
-     @Pattern(regexp = "^[A-Z0-9]*$", message = "This field must contain only uppercase letters and digits")
+     @Pattern(regexp = "^[A-Z0-9.]*$", message = "This field must contain only uppercase letters and digits")
      private String passiveAcount;
       
    
