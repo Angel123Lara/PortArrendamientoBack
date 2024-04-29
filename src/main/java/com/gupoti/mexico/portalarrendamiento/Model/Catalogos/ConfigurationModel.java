@@ -1,6 +1,8 @@
 package com.gupoti.mexico.portalarrendamiento.Model.Catalogos;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -47,19 +49,19 @@ public class ConfigurationModel {
    private Boolean enabled;
 
   @Column(name = "created_date")
-  private LocalDateTime createdDate;
+  private Date createdDate;
 
   @Column(name = "created_by")
-  private String createdBy;
+  private Long createdBy;
 
    @Column(name = "last_update_date")
-  private LocalDateTime lastUpdateDate;
+  private Date lastUpdateDate;
 
   @Column(name = "last_updated_by ")
-  private String lastupdatedby ;
+  private Long lastupdatedby ;
 
   @Column(name = "last_update_login")
-  private String lastUpdateLogin ;
+  private Long lastUpdateLogin ;
 
  
 
