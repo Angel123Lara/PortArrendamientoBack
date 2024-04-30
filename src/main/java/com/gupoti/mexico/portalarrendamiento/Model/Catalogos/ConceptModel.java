@@ -24,8 +24,10 @@ public class ConceptModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
+    @NonNull
     @Column(name="PORTAL_CONCEPT")
     private String portalConcept;
+    @NonNull
     @Column(name="EBS_CONCEPT")
     private String ebsConcept;
     @Column(name="INACTIVATION_DATE")
@@ -36,10 +38,11 @@ public class ConceptModel {
     private Long createdBy;
     @Column(name="LAST_UPDATE_DATE")
     private Date lastUpdateDate;
-    @Column(name="LAST_UPDATE_BY")
+    @Column(name="LAST_UPDATED_BY")
     private Long lastUpdatedBy;
     @Column(name="LAST_UPDATE_LOGIN")
     private Long lastUpdateLogin;
+    @NonNull
     @Column(name="ENABLED")
     private Boolean enabled;
 
