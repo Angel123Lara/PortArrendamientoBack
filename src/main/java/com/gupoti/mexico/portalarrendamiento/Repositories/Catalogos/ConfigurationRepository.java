@@ -1,6 +1,5 @@
 package com.gupoti.mexico.portalarrendamiento.Repositories.Catalogos;
 
-import java.util.Optional;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +12,9 @@ import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.ConfigurationModel;
 
 @Repository
 public interface ConfigurationRepository extends JpaRepository<ConfigurationModel, Long> {
-    Optional<ConfigurationModel> findByCountry(String country);
-    
+
+
+    ConfigurationModel findByCountry(String country);
+
 
 }

@@ -4,9 +4,7 @@ package com.gupoti.mexico.portalarrendamiento.Dto.Catalogos;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
@@ -57,6 +55,6 @@ public class ConfigurationRequestDTO  {
      @Size(min = 1, max =48, message ="the max length 48")
      @Pattern(regexp = "^[A-Z0-9.]*$", message = "This field must contain only uppercase letters and digits")
      private String passiveAcount;
-      
+     private Boolean enabled;
    
 }

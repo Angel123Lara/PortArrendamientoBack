@@ -1,65 +1,94 @@
 package com.gupoti.mexico.portalarrendamiento.ServiceImpl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationRequestDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationResponseDTO;
+import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.CurrencyDTO;
 import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.ConfigurationModel;
+import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.CurrencyModel;
 import com.gupoti.mexico.portalarrendamiento.Repositories.Catalogos.ConfigurationRepository;
 import com.gupoti.mexico.portalarrendamiento.Service.Catalogos.ConfigurationService;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
+
 
 @Service
 public class ConfigurationServiceImpl implements ConfigurationService {
 
-    @Autowired
-    private ConfigurationRepository configurationRepository;
+       private final ConfigurationRepository repository;
+    private final ModelMapper modelMapper;
 
-    public ConfigurationServiceImpl(ConfigurationRepository configurationRepository) {
-        this.configurationRepository = configurationRepository;
+    public ConfigurationServiceImpl(ConfigurationRepository repository, ModelMapper modelMapper) {
+        this.repository = repository;
+        this.modelMapper = modelMapper;
     }
 
-    @Autowired
-    private ModelMapper modelMapper;
+    @Override
+public ConfigurationResponseDTO create(ConfigurationRequestDTO requestDTO) {
+    ConfigurationModel existCountry = repository.findByCountry(requestDTO.getCountry());
+    if (existCountry != null) {
+        throw new DataIntegrityViolationException("El valor " + requestDTO.getCountry() + " ya existe y el campo solo permite valores únicos.");
+    }
+    ConfigurationModel model = modelMapper.map(requestDTO, ConfigurationModel.class);
+    ConfigurationModel savedModel = repository.save(model);
+    model.setCreatedDate(new Date());
+    return modelMapper.map(savedModel, ConfigurationResponseDTO.class);
+}
+
 
     @Override
+    public ConfigurationResponseDTO get(String country) {
+        ConfigurationModel model = repository.findByCountry(country);
+        return modelMapper.map(model, ConfigurationResponseDTO.class);
+    }
+
+    @Override
+    public ConfigurationResponseDTO update(String country, ConfigurationRequestDTO requestDTO) {
+        ConfigurationModel existCountry = repository.findByCountry(requestDTO.getCountry());
+        if (existCountry != null && !existCountry.getCountry().equals(country)) {
+            throw new DataIntegrityViolationException("El valor de esta actualizacion " + requestDTO.getCountry() + " ya existe y el campo solo permite valores únicos.");
+        }
+        ConfigurationModel model = repository.findByCountry(country);
+        model.setPrimaryBook(requestDTO.getPrimaryBook());
+        model.setSecondBook(requestDTO.getSecondBook());
+        model.setOperationalUnit(requestDTO.getOperationalUnit());
+        model.setDivisa(requestDTO.getDivisa());
+        model.setPassiveAcount(requestDTO.getPassiveAcount());
+        model.setEnabled(requestDTO.getEnabled());
+        model.setLastUpdateDate(new Date());
+        ConfigurationModel savedModel = repository.save(model);
+        return modelMapper.map(savedModel, ConfigurationResponseDTO.class);
+
+    }
+    @Override
     public List<ConfigurationResponseDTO> getAllConfigurations() {
-        return configurationRepository.findAll().stream()
+        return repository.findAll().stream()
                 .map(configurationModel -> modelMapper.map(configurationModel, ConfigurationResponseDTO.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public ConfigurationResponseDTO getConfigurationById(Long id) {
-        ConfigurationModel configurationModel = configurationRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Configuration not found"));
-        return modelMapper.map(configurationModel, ConfigurationResponseDTO.class);
-    }
-
-    @Override
-    public ConfigurationResponseDTO createConfiguration(ConfigurationRequestDTO configurationRequestDTO) {
-        ConfigurationModel configurationModel = modelMapper.map(configurationRequestDTO, ConfigurationModel.class);
-        ConfigurationModel savedConfigurationModel = configurationRepository.save(configurationModel);
-        return modelMapper.map(savedConfigurationModel, ConfigurationResponseDTO.class);
-    }
-
-    @Override
-    public ConfigurationModel saveConfiguration(ConfigurationModel configuration) {
-        Optional<ConfigurationModel> existingConfiguration = configurationRepository
-                .findByCountry(configuration.getCountry());
-        if (existingConfiguration.isPresent()) {
-            throw new DuplicateCountryException("Country already exists");
+    public ConfigurationResponseDTO enabledById(Long id) {
+        ConfigurationModel existEntity = repository.findById(id)
+               .orElseThrow(()-> new DataIntegrityViolationException("No se encontro el registro con el id :"+ id ));
+    
+        if(existEntity.getEnabled() == null) {
+            existEntity.setEnabled(true);
+        } else {
+            existEntity.setEnabled(!existEntity.getEnabled());
         }
-        return configurationRepository.save(configuration);
+        ConfigurationModel responseDB = repository.save(existEntity);
+    
+        return new ConfigurationResponseDTO(responseDB.getId(), responseDB.getCountry(), responseDB.getPrimaryBook(), responseDB.getSecondBook(), responseDB.getOperationalUnit(), responseDB.getDivisa(), responseDB.getPassiveAcount(), responseDB.getEnabled());
     }
 
-    public class DuplicateCountryException extends RuntimeException {
-        public DuplicateCountryException(String message) {
-            super(message);
-        }
-    }
+ 
+   
 }
