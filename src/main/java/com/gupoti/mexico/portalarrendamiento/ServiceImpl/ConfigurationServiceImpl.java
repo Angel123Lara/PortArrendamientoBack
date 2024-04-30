@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationRequestDTO;
@@ -13,6 +14,7 @@ import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.ConfigurationModel;
 import com.gupoti.mexico.portalarrendamiento.Repositories.Catalogos.ConfigurationRepository;
 import com.gupoti.mexico.portalarrendamiento.Service.Catalogos.ConfigurationService;
 
+import java.util.stream.Collectors;
 
 
 @Service
@@ -63,4 +65,13 @@ public ConfigurationResponseDTO create(ConfigurationRequestDTO requestDTO) {
         return modelMapper.map(savedModel, ConfigurationResponseDTO.class);
 
     }
+    @Override
+    public List<ConfigurationResponseDTO> getAllConfigurations() {
+        return repository.findAll().stream()
+                .map(configurationModel -> modelMapper.map(configurationModel, ConfigurationResponseDTO.class))
+                .collect(Collectors.toList());
+    }
+
+ 
+   
 }

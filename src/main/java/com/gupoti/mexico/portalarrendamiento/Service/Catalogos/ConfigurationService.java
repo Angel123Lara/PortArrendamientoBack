@@ -1,11 +1,14 @@
 package com.gupoti.mexico.portalarrendamiento.Service.Catalogos;
+
+import java.util.List;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationRequestDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationResponseDTO;
-import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.ConfigurationModel;
+
 
 public interface ConfigurationService {
+    List<ConfigurationResponseDTO> getAllConfigurations();
     ConfigurationResponseDTO create(ConfigurationRequestDTO request);
     ConfigurationResponseDTO get(String country);
     ConfigurationResponseDTO update(String country, ConfigurationRequestDTO request);
-
+   
 }
