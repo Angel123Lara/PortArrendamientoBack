@@ -15,12 +15,12 @@ public class ConceptRequestDTO{
     @NotBlank(message="this fiels isnt't blanck")
     @Size(min =1, max= 30, message="the max length is 30")
     
-    private String portal_concept;
+    private String portalConcept;
 
     @NotNull(message="this fiels isnt't null")
     @NotEmpty(message="this fiels isnt't empty")
     @NotBlank(message="this fiels isnt't blanck")
     @Size(min =1, max= 30, message="the max length is 30")
-    private String EBS_concept;
+    private String ebsConcept;
    
 }
