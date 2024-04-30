@@ -1,4 +1,6 @@
 package com.gupoti.mexico.portalarrendamiento.Model.Catalogos;
+
+import java.time.Instant;
 import java.util.Date;
 
 import jakarta.persistence.Column;
