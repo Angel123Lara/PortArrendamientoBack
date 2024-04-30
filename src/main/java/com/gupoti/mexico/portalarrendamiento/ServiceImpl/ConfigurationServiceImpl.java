@@ -10,7 +10,9 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationRequestDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationResponseDTO;
+import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.CurrencyDTO;
 import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.ConfigurationModel;
+import com.gupoti.mexico.portalarrendamiento.Model.Catalogos.CurrencyModel;
 import com.gupoti.mexico.portalarrendamiento.Repositories.Catalogos.ConfigurationRepository;
 import com.gupoti.mexico.portalarrendamiento.Service.Catalogos.ConfigurationService;
 
@@ -70,6 +72,21 @@ public ConfigurationResponseDTO create(ConfigurationRequestDTO requestDTO) {
         return repository.findAll().stream()
                 .map(configurationModel -> modelMapper.map(configurationModel, ConfigurationResponseDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public ConfigurationResponseDTO enabledById(Long id) {
+        ConfigurationModel existEntity = repository.findById(id)
+               .orElseThrow(()-> new DataIntegrityViolationException("No se encontro el registro con el id :"+ id ));
+    
+        if(existEntity.getEnabled() == null) {
+            existEntity.setEnabled(true);
+        } else {
+            existEntity.setEnabled(!existEntity.getEnabled());
+        }
+        ConfigurationModel responseDB = repository.save(existEntity);
+    
+        return new ConfigurationResponseDTO(responseDB.getId(), responseDB.getCountry(), responseDB.getPrimaryBook(), responseDB.getSecondBook(), responseDB.getOperationalUnit(), responseDB.getDivisa(), responseDB.getPassiveAcount(), responseDB.getEnabled());
     }
 
  

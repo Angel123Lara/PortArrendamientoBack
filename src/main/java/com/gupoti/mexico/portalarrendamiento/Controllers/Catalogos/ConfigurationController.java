@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationRequestDTO;
 import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.ConfigurationResponseDTO;
+import com.gupoti.mexico.portalarrendamiento.Dto.Catalogos.CurrencyDTO;
 import com.gupoti.mexico.portalarrendamiento.Service.Catalogos.ConfigurationService;
 
 import jakarta.validation.Valid;
@@ -48,5 +49,10 @@ private final ConfigurationService service;
     public ResponseEntity<List<ConfigurationResponseDTO>> getAllConfigurations() {
         List<ConfigurationResponseDTO> configurations = configurationService.getAllConfigurations();
         return new ResponseEntity<>(configurations, HttpStatus.OK);
+    }
+    
+    @PostMapping("enabled/{id}")
+    public ResponseEntity<ConfigurationResponseDTO> enabledById(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.enabledById(id));
     }
 }
